@@ -1,0 +1,56 @@
+#Dictionary of the services
+jobs = {
+    1: {'Service':'Oil Change','Cost':35},
+    2: {'Service':'Tire rotation','Cost':19}, 
+    3: {'Service':'Car wash','Cost':7},
+    4: {'Service':'Car wax','Cost':12}
+}
+
+# Updated display string.
+display = """
+\t\tDavy's auto shop services\n 
+\t\t 1. Oil change  -- $35\n
+\t\t 2. Tire rotation -- $19\n
+\t\t 3. Car wash -- $7\n
+\t\t 4. Car wax -- $12"""
+
+# Print the services menu.
+print(display)
+
+# Prompt the user for their selections and change it to an interger value
+input1 = int(input("Select first service (number or '-' for no service):\n"))
+input2 = int(input("Select second service (number or '-' for no service):\n"))
+
+
+# Function to process the user's service selection.
+def whatService(service_num):
+
+    if service_num in jobs:
+        service_name = jobs[service_num]['Service']
+        service_cost = jobs[service_num]['Cost']
+    
+    else:
+        service_name = 'No Service'
+        service_cost = 0
+    
+    return service_name,service_cost
+
+# Function to calculate the total cost.
+def calculateTotal(cost1, cost2):
+    # Directly calculate the total as costs are now integers.
+    total = cost1 + cost2
+    return total
+
+# Retrieve the services and their costs based on user input.
+service1_name, service1_cost = whatService(input1)
+service2_name, service2_cost = whatService(input2)
+
+# Calculate the total cost.
+total = calculateTotal(service1_cost, service2_cost)
+
+# Print the invoice.
+print(f"""\nDavy's auto shop invoice
+Service 1: {service1_name}, ${service1_cost}
+Service 2: {service2_name}, ${service2_cost}
+
+Total: ${total}""")
